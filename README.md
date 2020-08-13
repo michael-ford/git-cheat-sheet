@@ -514,9 +514,23 @@ $ git rm <resolved-file>
 ```
 
 ##### Squashing commits:
+Squash the last 3 commits:
+```
+git reset --soft HEAD~3 &&
+git commit```
+
+Squash the last 3 commits *and concatenate the comit messages*:
+
+```
+git reset --soft HEAD~3 && 
+git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
+```
+
+Squash certain commits:
 ```
 $ git rebase -i <commit-just-before-first>
 ```
+[Source](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git/5201642#5201642)
 
 Now replace this,
 
