@@ -499,6 +499,33 @@ $ git rebase <branch>
 $ git rebase --abort
 ```
 
+##### Resolving conflicts
+
+
+Even though this question is answered, providing an example as to what "theirs" and "ours" means in the case of git rebase vs merge. See this link
+
+Git Rebase
+
+theirs is actually the current branch in the case of rebase. So the below set of commands are actually accepting your current branch changes over the remote branch.
+
+```
+# see current branch
+$ git branch
+... 
+* branch-a
+# rebase preferring current branch changes during conflicts
+$ git rebase -X theirs branch-b
+```
+Git Merge
+
+For merge, the meaning of theirs and ours is reversed. So, to get the same effect during a merge, i.e., keep your current branch changes (ours) over the remote branch being merged (theirs).
+
+```
+# assuming branch-a is our current version
+$ git merge -X ours branch-b  # <- ours: branch-a, theirs: branch-b
+```
+
+
 ##### Continue a rebase after resolving conflicts:
 ```
 $ git rebase --continue
@@ -517,7 +544,8 @@ $ git rm <resolved-file>
 Squash the last 3 commits:
 ```
 git reset --soft HEAD~3 &&
-git commit```
+git commit
+```
 
 Squash the last 3 commits *and concatenate the comit messages*:
 
