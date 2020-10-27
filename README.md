@@ -493,6 +493,23 @@ $ git merge <branch>
 ```
 $ git rebase <branch>
 ```
+Example:
+```
+          A---B---C topic
+         /
+    D---E---F---G master
+```
+From this point, the result of either of the following commands:
+```
+git rebase master
+git rebase master topic
+```
+would be:
+```
+                  A'--B'--C' topic
+                 /
+    D---E---F---G master
+```
 
 ##### Abort a rebase:
 ```
