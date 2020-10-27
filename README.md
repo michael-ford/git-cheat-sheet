@@ -494,6 +494,7 @@ $ git merge <branch>
 $ git rebase <branch>
 ```
 Example:
+Assume the following history exists and the current branch is "topic":
 ```
           A---B---C topic
          /
