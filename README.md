@@ -39,6 +39,14 @@ Git Cheat Sheet English
 
 <hr>
 
+## Misc functions
+
+##### Show file from different branch/commit without checking out
+```
+$ git show <hash>:<file path>
+```
+<hr>
+
 ## Setup
 
 ##### Show current configuration:
@@ -254,6 +262,11 @@ $ git grep "Hello" v2.5
 $ git log
 ```
 
+##### Show all commits, starting with newest (it'll show the hash, author information, date of commit and title of the commit):
+```
+$ git log
+```
+
 ##### Show all the commits(it'll show just the commit hash and the commit message):
 ```
 $ git log --oneline
@@ -327,6 +340,12 @@ $ git checkout <branch>
 ##### Checkout single file from different branch
 ```
 $ git checkout <branch> -- <filename>
+```
+
+##### Checkout single file from different branch to a new name
+```
+$ git show <branch/commit>:<file-path> > <new-path>
+
 ```
 
 ##### Create and switch new branch:
@@ -485,6 +504,21 @@ $ git mergetool
 ##### Merge branch into your current HEAD:
 ```
 $ git merge <branch>
+```
+
+##### Merge dry run
+
+Pass in the --no-commit flag, but to avoid a fast-forward commit, also pass in --no-ff, like so:
+```
+$ git merge --no-commit --no-ff $BRANCH
+```
+To examine the staged changes:
+```
+$ git diff --cached
+```
+And you can undo the merge, even if it is a fast-forward merge:
+```
+$ git merge --abort
 ```
 
 ##### Rebase your current HEAD onto &lt;branch&gt;:<br>
