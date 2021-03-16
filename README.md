@@ -546,6 +546,15 @@ would be:
     D---E---F---G master
 ```
 
+##### Rebase only X number of commits onto another branch
+
+```
+git checkout -b staging_branch
+git rebase -i HEAD~X --onto another_branch
+git checkout another_branch
+git merge staging_branch
+```
+
 ##### Abort a rebase:
 ```
 $ git rebase --abort
