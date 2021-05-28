@@ -555,6 +555,37 @@ git checkout another_branch
 git merge staging_branch
 ```
 
+OR 
+```
+git rebase --onto <new_branch_base> <last-change-that-should-NOT-move> <change to move>
+```
+
+ie 
+```
+master                     new branch 1
+- - - - - - - - - - - | - - - - - - - - -
+    \
+     \   branch 1
+      \ _ _ _ _ _ _ _
+                     \
+                      \     branch 2
+                       \ _ _ _ _ _ _ _
+```
+to 
+```
+master            new branch 1    
+- - - - - - - | - - - - - - - - - -
+                                   \
+                                    \
+                                     \
+                                      \    branch 2
+                                       - - - - - - - - - 
+```
+with 
+```
+git rebase --onto newbranch1 branch1 branch2
+```
+
 ##### Abort a rebase:
 ```
 $ git rebase --abort
